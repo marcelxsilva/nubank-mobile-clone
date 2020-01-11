@@ -1,12 +1,19 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container, Code, Image, Nav, NavItem, NavText, SignOutButton, SignOutButtonText} from './styles';
+import { Container, Code, Image, Nav, NavItem, NavText, SignOutButton, SignOutButtonText } from './styles';
 import qrcode from '~/assets/qrcode.png';
 
-export default function Menu() {
+export default function Menu({ translateY }) {
   return (
-    <Container >
+    <Container
+      style={{
+        opacity: translateY.interpolate({
+          inputRange: [0, 200],
+          outputRange: [0, 1],
+        })
+      }}
+    >
       <Code>
         <Image source={qrcode} />
       </Code>
