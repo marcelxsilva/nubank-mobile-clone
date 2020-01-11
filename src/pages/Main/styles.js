@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Animated } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,7 +13,7 @@ export const Content = styled.View`
   z-index: 5;
 `;
 
-export const Card = styled.View`
+export const Card = styled(Animated.View)`
   flex: 1;
   background: #fff;
   border-radius: 4px;
@@ -21,7 +22,7 @@ export const Card = styled.View`
   position: absolute;
   left: 0;
   right: 0;
-  top: 420;
+  top: 0;
 `;
 
 export const CardHeader = styled.View`
@@ -55,6 +56,6 @@ export const CardFooter = styled.View`
 `;
 
 export const Annotation = styled.Text`
-  font-size: 12px;
+  font-size: 15px;
   color:#333;
 `;
