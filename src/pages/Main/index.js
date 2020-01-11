@@ -23,11 +23,28 @@ export default function Main() {
   )
 
   function onHandlerStatedChanged(event) {
+    let opened = false;
     if (event.nativeEvent.oldState === State.ACTIVE) {
       const { translationY } = event.nativeEvent;
       offset += translationY;
-      translateY.setOffset(offset)
-      translateY.setValue(0)
+
+      if (translationY >= 30) {
+        opened = true;
+      } else {
+        translateY.setOffset(offset)
+        translateY.setValue(0)
+        offset = 0
+      }
+
+      Animated.timing(translateY, {
+        toValue: opened ? 420 : 0,
+        duration: 200,
+        useNativeDriver: true
+      }).start(() => {
+        offset = opened ? 420 : 0;
+        translateY.setOffset(offset)
+        translateY.setValue(0)
+      })
     }
   }
 
