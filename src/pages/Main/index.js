@@ -23,7 +23,12 @@ export default function Main() {
   )
 
   function onHandlerStatedChanged(event) {
-
+    if (event.nativeEvent.oldState === State.ACTIVE) {
+      const { translationY } = event.nativeEvent;
+      offset += translationY;
+      translateY.setOffset(offset)
+      translateY.setValue(0)
+    }
   }
 
   return (
