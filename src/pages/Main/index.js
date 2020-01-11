@@ -10,6 +10,7 @@ import Menu from '~/components/Menu';
 import { Container, Content, Card, CardHeader, Description, CardContent, Title, CardFooter, Annotation } from "./styles";
 
 export default function Main() {
+  let offset = 0;
   const translateY = new Animated.Value(0);
   const animatedEvent = Animated.event([
     {
@@ -23,7 +24,6 @@ export default function Main() {
 
   function onHandlerStatedChanged(event) {
 
-
   }
 
   return (
@@ -36,8 +36,8 @@ export default function Main() {
           <Card style={{
             transform: [{
               translateY: translateY.interpolate({
-                inputRange: [-200, 0,420],
-                outputRange: [-50, 0, 420],
+                inputRange: [-200, 0, 420],
+                outputRange: [-20, 0, 420],
                 extrapolate: 'clamp'
               }),
             }]
@@ -59,7 +59,7 @@ export default function Main() {
         </PanGestureHandler>
       </Content>
 
-      <Tabs />
+      <Tabs translateY={translateY} />
     </Container>
   )
 }
